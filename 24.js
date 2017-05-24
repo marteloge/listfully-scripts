@@ -25,5 +25,7 @@ var generateListfullyLink = function(url, storeId, props) {
 
 if (!!isProductPage) {
   console.log("loaded");
-  generateListfullyLink(url, storeId, props);
+  var link = generateListfullyLink(url, storeId, props);
+  console.log("link", link);
+  $( "product__wishlist-button" ).replaceWith( "<h2>New heading</h2>" );
 }
