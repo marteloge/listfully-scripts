@@ -24,8 +24,16 @@ var generateListfullyLink = function(url, storeId, props) {
 }
 
 if (!!isProductPage) {
-  console.log("loaded");
   var link = generateListfullyLink(url, storeId, props);
-  console.log("link", link);
-  $( "product__wishlist-button" ).replaceWith( "<h2>New heading</h2>" );
+  
+  $( "a.product__wishlist-button" ).replaceWith(
+    "<a href='" + link + "' class='button large expand secondary product__wishlist-button disabled'>" +
+    "<i class='icon-favorite'></i>Ønskeliste</a>"
+  );
 }
+
+
+
+
+
+
