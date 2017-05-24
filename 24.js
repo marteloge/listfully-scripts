@@ -25,5 +25,5 @@ var generateListfullyLink = function(url, storeId, props) {
 
 if (!!isProductPage) {
   console.log("loaded");
-  return generateListfullyLink(url, storeId, props);
+  generateListfullyLink(url, storeId, props);
 }
