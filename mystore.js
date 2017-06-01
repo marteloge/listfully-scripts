@@ -27,7 +27,7 @@ var generateListfullyLink = function(url, storeId, props) {
     if (key === "productPrice" && !isNaN(propValue)) {
       link = link + "&" + value + "=" + parseInt(propValue)
     } else if (key === "productImage" && propValue) {
-      link = link + "&" + value + "=" + propValue.replace("100_100", "666_666");
+      link = link + "&" + value + "=" + window.location.origin + "/users/listfully_mystore_no/images/" + (propValue).split("/").slice(-1).pop();
     } else {
       link = link + "&" + value + "=" + encodeURIComponent(propValue)
     } 
