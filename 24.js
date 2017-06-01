@@ -37,9 +37,3 @@ if (!!isProductPage) {
     "<i class='icon-favorite'></i>Ønskeliste</a>"
   );
 }
-
-
-
-
-
-
