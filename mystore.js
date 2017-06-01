@@ -11,7 +11,13 @@ var generateListfullyLink = function(url, storeId, props) {
   var link = url + "?code=" + storeId;
 
   if ($("meta[name='description']").attr('content') !== null) {
-     link = link + "&description=" + encodeURIComponent($("meta[name='description']").attr('content'))
+     link = link + "&description=" +
+       encodeURIComponent(
+         $("meta[name='description']")
+         .attr('content')
+         .trim()
+         .replace(/\r?\n|\r/g, "")
+       );
   }
   
   link = link + "&url=" + window.location.href + "&quantity=1";
