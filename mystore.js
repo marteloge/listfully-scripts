@@ -26,6 +26,8 @@ var generateListfullyLink = function(url, storeId, props) {
     var propValue = $('article').data(key);
     if (key === "productPrice" && !isNaN(propValue)) {
       link = link + "&" + value + "=" + parseInt(propValue)
+    } else if (key === "productImage" && propValue) {
+      link = link + "&" + value + "=" + propValue.replace("100_100", "666_666");
     } else {
       link = link + "&" + value + "=" + encodeURIComponent(propValue)
     } 
