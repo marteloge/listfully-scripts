@@ -12,10 +12,17 @@ var props = {
 
 var generateListfullyLink = function(url, storeId, props) {
   var link = url + "?code=" + storeId;
+  
+  link = link + "&quantity=1";
 
   $.each( props, (key, value) => {
     if($("meta[property='" + value + "']").attr('property') !== null) {
-       link = link + "&" + key + "=" + encodeURIComponent($("meta[property='" + value + "']").attr('content'));
+       var propValue = $("meta[property='" + value + "']").attr('content');
+       if (value === "product:price:amount" && !isNaN(propValue)) {
+         link = link + "&" + key + "=" + parseInt(propValue);
+       } else {
+         link = link + "&" + key + "=" + encodeURIComponent(propValue);
+       }
     }
   });
 
