@@ -15,12 +15,11 @@ var generateListfullyLink = function(url, storeId, props) {
 
   $.each( props, (key, value) => {
     if($("meta[property='" + value + "']").attr('property') !== null) {
-       link = link + "&" + key + "=" + $("meta[property='" + value + "']").attr('content')
+       link = link + "&" + key + "=" + encodeURIComponent($("meta[property='" + value + "']").attr('content'));
     }
   });
 
   return link;
-  //return encodeURIComponent(link);
 }
 
 if (!!isProductPage) {
