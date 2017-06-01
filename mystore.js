@@ -14,7 +14,7 @@ var generateListfullyLink = function(url, storeId, props) {
      link = link + "&description=" + encodeURIComponent($("meta[name='description']").attr('content'))
   }
   
-  link = link + "&url=" + window.location.href;
+  link = link + "&url=" + window.location.href + "&quantity=1";
   
   $.each( props, (key, value) => {
     var propValue = $('article').data(key);
