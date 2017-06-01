@@ -13,7 +13,9 @@ var generateListfullyLink = function(url, storeId, props) {
   if ($("meta[name='description']").attr('content') !== null) {
      link = link + "&description=" + encodeURIComponent($("meta[name='description']").attr('content'))
   }
-
+  
+  link = link + "&url=" + window.location.href;
+  
   $.each( props, (key, value) => {
     link = link + "&" + value + "=" + encodeURIComponent($('article').data(key))
   });
