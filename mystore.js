@@ -7,21 +7,32 @@ var props = {
   'productTitle': 'name'
 }
 
-
 var generateListfullyLink = function(url, storeId, props) {
   var link = url + "?code=" + storeId;
 
   if ($("meta[name='description']").attr('content') !== null) {
-     link = link + "&description=" + $("meta[name='description']").attr('content')
+     link = link + "&description=" + encodeURIComponent($("meta[name='description']").attr('content'))
   }
 
   $.each( props, (key, value) => {
-    link = link + "&" + value + "=" + $('article').data(key)
+    link = link + "&" + value + "=" + encodeURIComponent($('article').data(key))
   });
 
   return link;
 }
 
 if (!!isProductPage) {
-  generateListfullyLink(url, storeId, props);
+  var link = generateListfullyLink(url, storeId, props);
+  $( ".product-actions" ).append(
+    "<a target='_blank'" +
+    " href='" + link + "' " +
+    " style='background-color:black;'" +
+    " id='listfully'" +
+    " name='add_to_listfully' " +
+    " class='btn btn-primary btn-icon'" +
+    " >" +
+      "<i class='fa fa-heart'></i>" +
+      "<span>Legg til i ønskeliste</span>" +
+    "</a>"
+  );
 }
