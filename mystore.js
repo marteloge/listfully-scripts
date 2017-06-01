@@ -17,7 +17,12 @@ var generateListfullyLink = function(url, storeId, props) {
   link = link + "&url=" + window.location.href;
   
   $.each( props, (key, value) => {
-    link = link + "&" + value + "=" + encodeURIComponent($('article').data(key))
+    var propValue = $('article').data(key);
+    if (key === "productPrice" && !isNaN(propValue)) {
+      link = link + "&" + value + "=" + parseInt(propValue)
+    } else {
+      link = link + "&" + value + "=" + encodeURIComponent(propValue)
+    } 
   });
 
   return link;
