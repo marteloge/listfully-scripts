@@ -14,7 +14,7 @@ var generateLinkCart = function(url) {
   var cartLink = window.location.origin + "/handlevogn/fill?products=";
   
   var productId = $("input[name='id']").val();
-  if (productId) { cartLink = "/handlevogn/fill?products=" + productId; }
+  if (productId) { cartLink = cartLink + productId; }
   else { return url; }
   
   var details = $("div .product__attributes").find("select").val();
