@@ -8,7 +8,7 @@ var props = {
 }
 
 var generateListfullyLink = function(url, storeId, props) {
-  var link = url + "?code=" + storeId;
+  var link = url + "?code=" + storeId + "&quantity=1";
 
   if ($("meta[name='description']").attr('content') !== null) {
      link = link + "&description=" +
@@ -19,8 +19,6 @@ var generateListfullyLink = function(url, storeId, props) {
          .replace(/\r?\n|\r/g, "")
        );
   }
-  
-  link = link + "&url=" + window.location.href + "&quantity=1";
   
   $.each( props, (key, value) => {
     var propValue = $('article').data(key);
@@ -36,11 +34,21 @@ var generateListfullyLink = function(url, storeId, props) {
   return link;
 }
 
+var getURL = function(link) {
+  var productId = $("select").attr("option_id");
+  var detailsId = $(".product_attributes_wrapper").find("select").val();
+  link = link + "&url=" + window.location.origin + window.location.pathname;
+    
+  if (productId && detailsId) {
+     link = link + "#" + productId + "-" + detailsId;
+  }
+}
+
 if (!!isProductPage) {
   var link = generateListfullyLink(url, storeId, props);
   $( ".product-actions" ).append(
-    "<a target='_blank'" +
-    " href='" + link + "' " +
+    "<a target='_blank' id='listfully'" +
+    " href='" + getURL(link) + "' " +
     " style='background-color:black;'" +
     " id='listfully'" +
     " name='add_to_listfully' " +
@@ -50,4 +58,8 @@ if (!!isProductPage) {
       "<span>Legg til i ønskeliste</span>" +
     "</a>"
   );
+  
+  $( "select" ).change(function() {
+    $("#listfully").attr("href", getURL(link));
+  });
 }
