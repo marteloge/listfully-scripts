@@ -42,6 +42,7 @@ var getURL = function(link) {
   if (productId && detailsId) {
      link = link + "#" + productId + "-" + detailsId;
   }
+  return link;
 }
 
 if (!!isProductPage) {
