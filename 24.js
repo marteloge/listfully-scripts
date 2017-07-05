@@ -1,6 +1,7 @@
 var storeId = "123456";
 var storeName = "Be:Eco";
 var currency = "NOK";
+var website = "http://16053.24nb5.srv.ip.no/";
 
 var isProductPage = (document.location.pathname).match('/produkt');
 var url = "https://www.listfully.org/add";
@@ -32,7 +33,7 @@ var generateNewLink = function(generatedLink) {
 }
 
 var generateListfullyLink = function(url, storeId, props) {
-  var link = url + "?code=" + storeId + "&store=" + storeName;
+  var link = url + "?code=" + storeId + "&store=" + storeName + "&website=" + website;
 
   if (currency) {
     link = link + "&currency" + currency;
