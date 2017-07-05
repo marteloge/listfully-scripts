@@ -34,7 +34,7 @@ var generateListfullyLink = function(url, storeId, props) {
        var propValue = $("meta[property='" + value + "']").attr('content');
        if (value === "product:price:amount" && !isNaN(propValue)) {
          link = link + "&" + key + "=" + parseInt(propValue);
-       if (value === "og:url" && propValue) {
+       } else if (value === "og:url" && propValue) {
          link = link + "&" + key + "=" + generateLinkCart()
        } else {
          link = link + "&" + key + "=" + encodeURIComponent(propValue);
