@@ -1,8 +1,13 @@
-var isProductPage = (document.location.pathname).match('/products');
-var url = "https://www.listfully.org/add"
 var storeId = "123456789"
-var website = "vg.no";
+var website = "http://listfully.demo.mystore.no";
 var imageURL = window.location.origin + "/users/listfully_mystore_no/images/";
+var storeName = "MyStore";
+var currency = "NOK";
+
+//----------------------------
+
+var url = "https://www.listfully.org/add"
+var isProductPage = (document.location.pathname).match('/products');
 var props = {
   'productImage': 'image',
   'productPrice': 'price',
@@ -10,7 +15,7 @@ var props = {
 }
 
 var generateListfullyLink = function(url, storeId, props) {
-  var link = url + "?code=" + storeId + "&quantity=1";
+  var link = url + "?code=" + storeId + "&quantity=1" + "&store=" + storeName + "&website=" + website;
 
   if ($("meta[name='description']").attr('content') !== null) {
      link = link + "&description=" +
