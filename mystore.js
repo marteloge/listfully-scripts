@@ -1,6 +1,7 @@
 var isProductPage = (document.location.pathname).match('/products');
 var url = "https://www.listfully.org/add"
 var storeId = "123456789"
+var website = "vg.no";
 var imageURL = window.location.origin + "/users/listfully_mystore_no/images/";
 var props = {
   'productImage': 'image',
