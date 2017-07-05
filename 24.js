@@ -11,10 +11,15 @@ var props = {
 };
 
 var generateLinkCart = function(url) {
-  var product = $("input[name='id']").val();
+  var cartLink = window.location.origin + "/handlevogn/fill?products=";
+  
+  var productId = $("input[name='id']").val();
+  if (productId) { cartLink = "/handlevogn/fill?products=" + productId; }
+  else { return url; }
+  
   var details = $("div .product__attributes").find("select").val();
-  var cartLink = window.location.origin + "/handlevogn/fill?products=" + product;
   if (details) { cartLink = cartLink + "." + details; }
+  
   return cartLink
 }
 
@@ -35,7 +40,7 @@ var generateListfullyLink = function(url, storeId, props) {
        if (value === "product:price:amount" && !isNaN(propValue)) {
          link = link + "&" + key + "=" + parseInt(propValue);
        } else if (value === "og:url" && propValue) {
-         link = link + "&" + key + "=" + generateLinkCart()
+         link = link + "&" + key + "=" + generateLinkCart(propValue)
        } else {
          link = link + "&" + key + "=" + encodeURIComponent(propValue);
        }
