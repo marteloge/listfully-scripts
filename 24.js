@@ -1,3 +1,7 @@
+var storeId = "123456";
+var storeName = "Be:Eco";
+var currency = "NOK";
+
 var isProductPage = (document.location.pathname).match('/produkt');
 var url = "https://www.listfully.org/add";
 var props = {
