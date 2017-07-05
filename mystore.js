@@ -8,7 +8,7 @@ var props = {
 }
 
 var generateListfullyLink = function(url, storeId, props) {
-  var link = url + "?code=" + storeId;
+  var link = url + "?code=" + storeId + "&quantity=1";
 
   if ($("meta[name='description']").attr('content') !== null) {
      link = link + "&description=" +
@@ -20,7 +20,13 @@ var generateListfullyLink = function(url, storeId, props) {
        );
   }
   
-  link = link + "&url=" + window.location.href + "&quantity=1";
+  var productId = $("select").attr("option_id");
+  var detailsId = $(".product_attributes_wrapper").find("select").val();
+    
+  if (productId && detailsId) {
+    link = link + "&url=" + window.location.origin + window.location.pathname + "#" + productId + "-" + detailsId;
+  }
+  
   
   $.each( props, (key, value) => {
     var propValue = $('article').data(key);
