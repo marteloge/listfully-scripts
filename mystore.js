@@ -40,7 +40,7 @@ var getURL = function(link) {
   link = link + "&url=" + window.location.origin + window.location.pathname;
     
   if (productId && detailsId) {
-     link = link + "#" + productId + "-" + detailsId;
+     link = link + "%23" + productId + "-" + detailsId;
   }
   return link;
 }
