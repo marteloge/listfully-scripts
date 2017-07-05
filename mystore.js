@@ -1,6 +1,7 @@
 var isProductPage = (document.location.pathname).match('/products');
 var url = "https://www.listfully.org/add"
 var storeId = "123456789"
+var imageURL = window.location.origin + "/users/listfully_mystore_no/images/";
 var props = {
   'productImage': 'image',
   'productPrice': 'price',
@@ -25,7 +26,7 @@ var generateListfullyLink = function(url, storeId, props) {
     if (key === "productPrice" && !isNaN(propValue)) {
       link = link + "&" + value + "=" + parseInt(propValue)
     } else if (key === "productImage" && propValue) {
-      link = link + "&" + value + "=" + window.location.origin + "/users/listfully_mystore_no/images/" + (propValue).split("/").slice(-1).pop();
+      link = link + "&" + value + "=" + imageURL + (propValue).split("/").slice(-1).pop();
     } else {
       link = link + "&" + value + "=" + encodeURIComponent(propValue)
     } 
