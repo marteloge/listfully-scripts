@@ -43,9 +43,13 @@ var generateListfullyLink = function(url, storeId, props) {
 }
 
 if (!!isProductPage) {
+  
+}
+
+if (!!isProductPage) {
   var link = generateListfullyLink(url, storeId, props);
   $( ".product-actions" ).append(
-    "<a target='_blank'" +
+    "<a target='_blank' id='listfully'" +
     " href='" + link + "' " +
     " style='background-color:black;'" +
     " id='listfully'" +
@@ -56,4 +60,9 @@ if (!!isProductPage) {
       "<span>Legg til i ønskeliste</span>" +
     "</a>"
   );
+  
+  $( "select" ).change(function() {
+    var newLink = generateListfullyLink(url, storeId, props);
+    $("#listfully").attr("href", newLink);
+  });
 }
