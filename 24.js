@@ -1,5 +1,13 @@
 var isProductPage = (document.location.pathname).match('/produkt');
-var url = "https://www.listfully.org/add"
+var url = "https://www.listfully.org/add";
+var props = {
+  'price': 'product:price:amount',
+  'currency': 'product:price:currency',
+  'image': 'og:image',
+  'name': 'og:title',
+  'description': 'og:description',
+  'url': 'og:url'
+};
 
 var generateLinkCart = function(url) {
   var cartLink = window.location.origin + "/handlevogn/fill?products=";
@@ -16,7 +24,7 @@ var generateLinkCart = function(url) {
 
 
 var generateListfullyLink = function(url, storeId, props) {
-  var link = url + "?code=" + storeId + "&store=Be:Eco";
+  var link = url + "?code=" + storeId + "&store=" + storeName;
   
   var quantity = $("input[name='antall']").val();
   if (quantity) {
