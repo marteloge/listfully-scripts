@@ -26,6 +26,10 @@ var generateLinkCart = function(url) {
 var generateListfullyLink = function(url, storeId, props) {
   var link = url + "?code=" + storeId + "&store=" + storeName;
   
+  if (currency) {
+    link = link + "&currency" + currency;
+  }
+  
   var quantity = $("input[name='antall']").val();
   if (quantity) {
     link = link + "&quantity=" + quantity;
