@@ -43,10 +43,6 @@ var generateListfullyLink = function(url, storeId, props) {
 }
 
 if (!!isProductPage) {
-  
-}
-
-if (!!isProductPage) {
   var link = generateListfullyLink(url, storeId, props);
   $( ".product-actions" ).append(
     "<a target='_blank' id='listfully'" +
