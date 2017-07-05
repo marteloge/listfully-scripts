@@ -22,11 +22,11 @@ var generateListfullyLink = function(url, storeId, props) {
   
   var productId = $("select").attr("option_id");
   var detailsId = $(".product_attributes_wrapper").find("select").val();
+  link = link + "&url=" + window.location.origin + window.location.pathname;
     
   if (productId && detailsId) {
-    link = link + "&url=" + window.location.origin + window.location.pathname + "#" + productId + "-" + detailsId;
+     link = link + "#" + productId + "-" + detailsId;
   }
-  
   
   $.each( props, (key, value) => {
     var propValue = $('article').data(key);
