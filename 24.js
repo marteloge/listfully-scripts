@@ -1,6 +1,6 @@
 var isProductPage = (document.location.pathname).match('/produkt');
 var url = "https://www.listfully.org/add"
-var storeId = "123456789"
+var storeId = "1628294150"
 var props = {
   'price': 'product:price:amount',
   'currency': 'product:price:currency',
@@ -20,7 +20,7 @@ var generateLinkCart = function(url) {
 
 
 var generateListfullyLink = function(url, storeId, props) {
-  var link = url + "?code=" + storeId;
+  var link = url + "?code=" + storeId + "&store=Be:Eco;
   
   var quantity = $("input[name='antall']").val();
   if (quantity) {
