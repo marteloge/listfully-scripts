@@ -1,7 +1,4 @@
-var storeId = "123456";
-var storeName = "Listfully Store";
-var currency = "NOK";
-var website = "http://16053.24nb5.srv.ip.no/";
+//storeId, storeName, currency and website in config file
 
 var isProductPage = (document.location.pathname).match('/produkt');
 var url = "https://www.listfully.org/add";
