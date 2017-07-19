@@ -54,19 +54,12 @@ var getURL = function(link) {
 
 if (!!isProductPage) {
   var link = generateListfullyLink(url, storeId, props);
-  $( ".product-actions" ).append(
-    "<a target='_blank' id='listfully'" +
-    " href='" + getURL(link) + "' " +
-    " style='background-color:black;'" +
-    " id='listfully'" +
-    " name='add_to_listfully' " +
-    " class='btn btn-primary btn-icon'" +
-    " >" +
-      "<i class='fa fa-heart'></i>" +
-      "<span>Legg til i ønskeliste</span>" +
-    "</a>"
+  $( "#add_to_wishlist" ).replaceWith(
+    "<a target='_blank' href='" + getURL(link) +
+    "' id='listfully' class='btn btn-borders btn-secondary'>" +
+    "<i style='margin-right:5px;' class='fa fa-heart'></i>Ønskeliste</a>"
   );
-  
+
   $( "select" ).change(function() {
     $("#listfully").attr("href", getURL(link));
   });
