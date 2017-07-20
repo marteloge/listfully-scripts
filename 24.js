@@ -33,7 +33,7 @@ var generateListfullyLink = function(url, storeId, props) {
   var link = url + "?code=" + storeId + "&store=" + storeName + "&website=" + website;
 
   if (currency) {
-    link = link + "&currency" + currency;
+    link = link + "&currency=" + currency;
   }
 
   var quantity = $("input[name='antall']").val();
