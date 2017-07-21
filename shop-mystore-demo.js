@@ -1,11 +1,11 @@
-var storeId = "123456789"
+var storeId = "123456789";
 var website = "http://listfully.demo.mystore.no";
-var imageURL = window.location.origin + "/users/listfully_mystore_no/images/";
-var storeName = "MyStore";
+var storeName = "Demobutikk";
 var currency = "NOK";
-var props = {
-  'og:image': 'image',
-  'og:title': 'name',
-  'og:description': 'description',
-  'product:price:amount': 'price'
-}
+
+var link =
+  "https://www.listfully.org/add?" +
+  "code=" + storeId +
+  "&store=" + storeName +
+  "&website=" + website +
+  "&currency=NOK";
