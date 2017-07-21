@@ -54,4 +54,8 @@ if (!!isProductPage) {
   $( "select" ).change(function() {
     $("#listfully").attr("href", getURL(base));
   });
+  
+  $( "input" ).change(function() {
+    $("#listfully").attr("href", getURL(base));
+  });
 }
