@@ -1,50 +1,59 @@
-var storeId = "123456789"
+var storeId = "123456789";
 var website = "http://listfully.demo.mystore.no";
-var imageURL = window.location.origin + "/users/listfully_mystore_no/images/";
-var storeName = "MyStore";
+var storeName = "Demobutikk";
 var currency = "NOK";
-
-//----------------------------
-
-var url = "https://www.listfully.org/add"
 var isProductPage = (document.location.pathname).match('/products');
-var props = {
-  'productImage': 'image',
-  'productPrice': 'price',
-  'productTitle': 'name'
-}
 
-var generateListfullyLink = function(url, storeId, props) {
-  var link = url + "?code=" + storeId + "&quantity=1" + "&store=" + storeName + "&website=" + website;
+var link =
+  "https://www.listfully.org/add?" +
+  "code=" + storeId +
+  "&store=" + storeName +
+  "&website=" + website +
+  "&currency=NOK";
 
-  if ($("meta[name='description']").attr('content') !== null) {
-     link = link + "&description=" +
-       encodeURIComponent(
-         $("meta[name='description']")
-         .attr('content')
-         .trim()
-         .replace(/\r?\n|\r/g, "")
-       );
-  }
+var generateListfullyLink = function() {
+  // set product price
+  var price = $('div.klarna-widget').data('price') || $('div.product-price').text();
+  if (price && parseInt(price)) { link = link + "&price=" + parseInt(price); }
   
-  $.each( props, (key, value) => {
-    var propValue = $('article').data(key);
-    if (key === "productPrice" && !isNaN(propValue)) {
-      link = link + "&" + value + "=" + parseInt(propValue)
-    } else if (key === "productImage" && propValue) {
-      link = link + "&" + value + "=" + imageURL + (propValue).split("/").slice(-1).pop();
-    } else {
-      link = link + "&" + value + "=" + encodeURIComponent(propValue)
-    } 
-  });
+  // set product name
+  var name = $('form#add2cart').find('h1').text();
+  if (name) {
+    link = link + "&name=" + encodeURIComponent(name);  
+  }
+
+  // set product description
+  var description = $("meta[name='description']").attr("content");
+  if (description) {
+    link = link + "&description=" + encodeURIComponent(description);
+  }  
+
+  // set product image link
+  if ($('li.gallery_image').size() === 1) {
+    link = link + "&image=" + $('li.gallery_image').find('a').attr('href');
+  } else if ($('li.gallery_image.flex-active-slide').size() >= 1) {
+    link = link + "&image=" + 
+    ($('li.gallery_image.flex-active-slide').find('a').first().data('zoom-image') || 
+    $('li.gallery_image.flex-active-slide').find('a').first().attr('href'));
+  } else if ($(".etalage_source_image")) {
+    link = link + "&image=" + $(".etalage_source_image").first().attr('src');
+  }
+
+  // set product quantity
+  var quantity = $( "input[name$='quantity']" ).val() || 1;
+  if (quantity) {
+    link = link + "&quantity=" + quantity;
+  }
 
   return link;
 }
 
 var getURL = function(link) {
   var productId = $("select").attr("option_id");
-  var detailsId = $(".product_attributes_wrapper").find("select").val();
-  link = link + "&url=" + window.location.origin + window.location.pathname;
+  var detailsId = $("select").val();
+  link = link + "&url=" +
+    (document.location.origin || document.location.hostname) +
+    document.location.pathname;
     
   if (productId && detailsId) {
      link = link + "%23" + productId + "-" + detailsId;
@@ -53,14 +62,14 @@ var getURL = function(link) {
 }
 
 if (!!isProductPage) {
-  var link = generateListfullyLink(url, storeId, props);
+  var base = generateListfullyLink();
   $( "#add_to_wishlist" ).replaceWith(
-    "<a target='_blank' href='" + getURL(link) +
+    "<a target='_blank' href='" + getURL(base) +
     "' id='listfully' class='btn btn-borders btn-secondary'>" +
     "<i style='margin-right:5px;' class='fa fa-heart'></i>Ønskeliste</a>"
   );
 
   $( "select" ).change(function() {
-    $("#listfully").attr("href", getURL(link));
+    $("#listfully").attr("href", getURL(base));
   });
 }
