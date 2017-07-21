@@ -48,7 +48,6 @@ if (!!isProductPage) {
   var base = generateListfullyLink();
   $("#listfully").attr("href", getURL(base));
 
-
   $( "select" ).change(function() {
     $("#listfully").attr("href", getURL(base));
   });
