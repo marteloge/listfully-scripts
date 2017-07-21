@@ -10,10 +10,14 @@ var props = {
   'description': 'og:description'
 };
 
+var getOrigin = function() {
+  return window.location.origin ? window.location.origin : (window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: ''));
+}
+
 var generateNewLink = function(generatedLink) {
   var newLink = generatedLink;
 
-  newLink = newLink + "&url=" + window.location.origin + "/handlevogn/fill?products=";
+  newLink = newLink + "&url=" + getOrigin() + "/handlevogn/fill?products=";
 
   var productId = $("input[name='id']").val();
   if (productId) { newLink = newLink + productId; }
