@@ -18,14 +18,8 @@ var generateListfullyLink = function() {
   }  
 
   // set product image link
-  if ($('li.gallery_image').size() === 1) {
-    link = link + "&image=" + $('li.gallery_image').find('a').attr('href');
-  } else if ($('li.gallery_image.flex-active-slide').size() >= 1) {
-    link = link + "&image=" + 
-    ($('li.gallery_image.flex-active-slide').find('a').first().data('zoom-image') || 
-    $('li.gallery_image.flex-active-slide').find('a').first().attr('href'));
-  } else if ($(".etalage_source_image")) {
-    link = link + "&image=" + $(".etalage_source_image").first().attr('src');
+  if (product_image) {
+    link = link + "&image=" + product_image;
   }
 
   // set product quantity
