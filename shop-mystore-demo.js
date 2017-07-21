@@ -8,4 +8,4 @@ var link =
   "code=" + storeId +
   "&store=" + storeName +
   "&website=" + website +
-  "&currency=NOK";
+  "&currency=" + currency;
