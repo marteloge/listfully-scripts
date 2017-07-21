@@ -52,11 +52,8 @@ var getURL = function(link) {
 
 if (!!isProductPage) {
   var base = generateListfullyLink();
-  $( "#add_to_wishlist" ).replaceWith(
-    "<a target='_blank' href='" + getURL(base) +
-    "' id='listfully' class='btn btn-borders btn-secondary'>" +
-    "<i style='margin-right:5px;' class='fa fa-heart'></i>Ønskeliste</a>"
-  );
+  $("#listfully").attr("href", getURL(base));
+
 
   $( "select" ).change(function() {
     $("#listfully").attr("href", getURL(base));
