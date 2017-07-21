@@ -5,8 +5,7 @@ var link =
   "&store=" + storeName +
   "&website=" + website +
   "&currency=" + currency +
-  "&image=" + product_image; 
-
+  "&image=" + product_image;
 
 var generateListfullyLink = function() {
   // set product price
