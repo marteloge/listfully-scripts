@@ -1,4 +1,12 @@
 var isProductPage = (document.location.pathname).match('/products');
+var link =
+  "https://www.listfully.no/add?" +
+  "code=" + storeId +
+  "&store=" + storeName +
+  "&website=" + website +
+  "&currency=" + currency +
+  "&image=" + product_image; 
+
 
 var generateListfullyLink = function() {
   // set product price
@@ -15,11 +23,6 @@ var generateListfullyLink = function() {
   var description = $("meta[name='description']").attr("content");
   if (description) {
     link = link + "&description=" + encodeURIComponent(description);
-  }  
-
-  // set product image link
-  if (product_image) {
-    link = link + "&image=" + product_image;
   }
 
   // set product quantity
