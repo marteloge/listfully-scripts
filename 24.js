@@ -2,12 +2,6 @@
 
 var isProductPage = (document.location.pathname).match('/produkt');
 var url = "https://www.listfully.org/add";
-var props = {
-  'price': 'product:price:amount',
-  'image': 'og:image',
-  'name': 'og:title',
-  'description': 'og:description'
-};
 
 var getOrigin = function() {
   return window.location.origin ? window.location.origin : (window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: ''));
