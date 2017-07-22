@@ -8,7 +8,7 @@ var getOrigin = function() {
 }
 
 var generateNewLink = function(generatedLink) {
-  var newLink = generatedLink;
+  var link = generatedLink;
   
   var quantity = $("input[name='antall']").val();
   if (quantity) {
@@ -17,7 +17,7 @@ var generateNewLink = function(generatedLink) {
     link = link + "&quantity=1";
   }
 
-  return newLink;
+  return link;
 }
 
 var generateListfullyLink = function() {
