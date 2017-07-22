@@ -20,12 +20,12 @@ var generateNewLink = function(generatedLink) {
   return newLink;
 }
 
-var generateListfullyLink = function(url, storeId, props) {
+var generateListfullyLink = function() {
   var link =
       url + "?code=" + storeId +
       "&store=" + storeName +
       "&website=" + website +
-      "&url=" + document.location.href +
+      "&url=" + encodeURIComponent(document.location.href) +
       "&currency=" + currency;
 
   $.each( props, (key, value) => {
@@ -43,14 +43,14 @@ var generateListfullyLink = function(url, storeId, props) {
 }
 
 if (!!isProductPage) {
-  var link = generateListfullyLink(url, storeId, props);
+  var base = generateListfullyLink();
   $( "a.product__wishlist-button" ).replaceWith(
-    "<a target='_blank' href='" + generateNewLink(link) +
+    "<a target='_blank' href='" + generateNewLink(base) +
     "' id='listfully' class='button large expand secondary product__wishlist-button disabled'>" +
     "<i class='icon-favorite'></i>Ønskeliste</a>"
   );
 
   $( "input#buy_count" ).change(function() {
-    $("#listfully").attr("href", generateNewLink(link));
+    $("#listfully").attr("href", generateNewLink(base));
   });
 }
