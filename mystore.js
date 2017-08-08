@@ -1,7 +1,7 @@
 var isProductPage = (document.location.pathname).match('/products');
 var link =
   "https://www.listfully.org/add?" +
-  "code=" + storeId +
+  "storeId=" + storeId +
   "&store=" + storeName +
   "&website=" + website +
   "&currency=" + currency +
