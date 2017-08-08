@@ -6,7 +6,7 @@ var productTab;
 
 var visitStore = function(url) {
   if (productTab) { productTab.close() }
-  productTab = window.open(url, "productTab", "");
+  productTab = window.open(url, "listfully", "");
 }
 
 var getOrigin = function() {
