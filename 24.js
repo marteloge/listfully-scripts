@@ -2,6 +2,12 @@
 
 var isProductPage = (document.location.pathname).match('/produkt');
 var url = "https://www.listfully.org/add";
+var productTab;
+
+var visitStore = function(url) {
+  if (productTab) { productTab.close() }
+  productTab = window.open(url, "productTab", "");
+}
 
 var getOrigin = function() {
   return window.location.origin ? window.location.origin : (window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: ''));
@@ -45,12 +51,16 @@ var generateListfullyLink = function() {
 if (!!isProductPage) {
   var base = generateListfullyLink();
   $( "a.product__wishlist-button" ).replaceWith(
-    "<a target='listfully' href='" + generateNewLink(base) +
-    "' id='listfully' class='button large expand secondary product__wishlist-button disabled'>" +
+    "<a target='listfully' " +
+    "id='listfully' class='button large expand secondary product__wishlist-button disabled'>" +
     "<i class='icon-favorite'></i>Ønskeliste</a>"
   );
 
-  $( "input#buy_count" ).change(function() {
-     $("#listfully").attr("href", generateNewLink(base));
+  //$( "input#buy_count" ).change(function() {
+  //   $("#listfully").attr("href", generateNewLink(base));
+  //});
+  
+  $("a#listfully").click(function() {
+    visitStore(generateNewLink(base))
   });
 }
