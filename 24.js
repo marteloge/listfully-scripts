@@ -51,6 +51,6 @@ if (!!isProductPage) {
   );
 
   $( "input#buy_count" ).change(function() {
-    $("#listfully").attr("href", generateNewLink(base));
+     $("#listfully").attr("href", generateNewLink(base));
   });
 }
