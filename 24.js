@@ -45,7 +45,7 @@ var generateListfullyLink = function() {
 if (!!isProductPage) {
   var base = generateListfullyLink();
   $( "a.product__wishlist-button" ).replaceWith(
-    "<a target='_blank' href='" + generateNewLink(base) +
+    "<a target='listfully' href='" + generateNewLink(base) +
     "' id='listfully' class='button large expand secondary product__wishlist-button disabled'>" +
     "<i class='icon-favorite'></i>Ønskeliste</a>"
   );
