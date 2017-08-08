@@ -28,7 +28,7 @@ var generateNewLink = function(generatedLink) {
 
 var generateListfullyLink = function() {
   var link =
-      url + "?code=" + storeId +
+      url + "?storeId=" + storeId +
       "&store=" + storeName +
       "&website=" + website +
       "&url=" + encodeURIComponent(document.location.href) +
